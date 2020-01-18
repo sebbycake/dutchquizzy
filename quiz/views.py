@@ -4,6 +4,9 @@ from django.http import JsonResponse, HttpResponse
 import random
 
 # Create your views here.
+def home_page(request):
+    return render(request, 'index.html')
+
 def send_json(request):
     total_qn = Questions.objects.count()
     # total_ans = Answers.objects.count()
