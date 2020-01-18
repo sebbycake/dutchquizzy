@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from quiz import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/question/', views.send_json, name='fetch_json'),
+    path('api/check_correct_ans/', views.check_correct_ans, name='check_ans')
 ]
