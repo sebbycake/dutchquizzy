@@ -178,7 +178,6 @@ function endLoad() {
 
 //variable to store deserialized json data
 var jsonObject;
-var testjson = '{"question" : "what is the answer", "answers" : { "ans1":"this is not the answer", "ans2":"also not the answer", "ans3":"definitely not the answer", "ans4": "this is the answer"}}';
 
 
 //shuffle function
@@ -207,10 +206,10 @@ function getQuestion() {
   //show loading animation 
   startLoad();
   //query api  
-  fetch('http://quiz.sebbycake.com/api/question/')
+  fetch('api/question/')
     .then(res => res.json())
     .then(res => {
-      jsonObject = JSON.parse(testjson);
+      jsonObject = res;
       choices.push(jsonObject.answers.ans1);
       choices.push(jsonObject.answers.ans2);
       choices.push(jsonObject.answers.ans3);
@@ -244,23 +243,6 @@ function checkAnswer(ques, ans) {
   a.value = ans;
   form.appendChild(a);
 
-  //TODO remove when able to actually fetch stuffz
-  getQuestion();
-  session.addScore();
-  switch (getRandomInt(10)) {
-    case 1:
-      //take away life cause why not
-      alert("I'm taking one of your lives away cause why not");
-      session.removeLife();
-    case 2:
-      alert("Here's an extra life for your efforts");
-      session.addLife();
-    case 3:
-      var subtract = getRandomInt(300);
-      alert("You're doing too well, I'm taking away " + subtract + " points.");
-      session.removeScore(subtract);
-  }
-
   //post request to api to check correctness of answer
   fetch('api/check_correct_ans/', {
     method: "POST",
@@ -283,13 +265,16 @@ function checkAnswer(ques, ans) {
         //take away life cause why not
         alert("I'm taking one of your lives away cause why not");
         session.removeLife();
+        break;
       case 2:
         alert("Here's an extra life for your efforts");
         session.addLife();
+        break;
       case 3:
         var subtract = getRandomInt(300);
         alert("You're doing too well, I'm taking away " + subtract + " points.");
         session.removeScore(subtract);
+        break;
     }
 
     if(session.getLives()<=0){
