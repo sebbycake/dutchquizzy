@@ -40,11 +40,13 @@ body {
 }
 
 .endScreen{
-  display: none
+  display: inline-block;
+  opacity: 0;
 }
 
 .startScreen{
-  display: none
+  display: inline-block;
+  opacity: 100;
 }
 
 #question {

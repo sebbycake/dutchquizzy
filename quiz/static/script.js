@@ -5,6 +5,7 @@ const loadTime = 0;
 var score;
 const loader = document.querySelector('.loader');
 const main = document.querySelector('.main');
+const startScreen = document.querySelector('.startScreen')
 
 // function load() {
 //   loader.style.opacity = 1;
@@ -56,7 +57,8 @@ var startPage = new Vue({
   },
   methods: {
     takeQuiz: function(){
-      this.visible = false;
+      startScreen.style.display = 'none';
+      startScreen.style.opacity = 0;
       getQuestion();
     }
   }
