@@ -207,7 +207,7 @@ function getQuestion() {
   //show loading animation 
   startLoad();
   //query api  
-  fetch('api/question/')
+  fetch('http://quiz.sebbycake.com/api/question/')
     .then(res => res.json())
     .then(res => {
       jsonObject = JSON.parse(testjson);
