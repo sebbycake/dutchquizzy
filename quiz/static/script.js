@@ -24,7 +24,7 @@ const startScreen = document.querySelector('.startScreen')
 
 var session = new Vue({
   el: '#sessionValues',
-  delimiters: ['[[',']]'],
+  delimiters: ['[[', ']]'],
   data: {
     score: 0,
     lives: 3
@@ -42,7 +42,7 @@ var session = new Vue({
     addLife: function () {
       this.lives += 1;
     },
-    getLives: function (){
+    getLives: function () {
       return this.lives;
     }
 
@@ -51,12 +51,12 @@ var session = new Vue({
 
 var startPage = new Vue({
   el: '#startQuiz',
-  delimiters: ['[[',']]'],
+  delimiters: ['[[', ']]'],
   data: {
     visible: true
   },
   methods: {
-    takeQuiz: function(){
+    takeQuiz: function () {
       startScreen.style.display = 'none';
       startScreen.style.opacity = 0;
       getQuestion();
@@ -66,7 +66,7 @@ var startPage = new Vue({
 
 var question = new Vue({
   el: '#question',
-  delimiters: ['[[',']]'],
+  delimiters: ['[[', ']]'],
   data: {
     message: 'kjhkjhkjh',
   },
@@ -85,7 +85,7 @@ var question = new Vue({
 
 var ans1 = new Vue({
   el: '#ans1',
-  delimiters: ['[[',']]'],
+  delimiters: ['[[', ']]'],
   data: {
     message: '',
   },
@@ -104,7 +104,7 @@ var ans1 = new Vue({
 
 var ans2 = new Vue({
   el: '#ans2',
-  delimiters: ['[[',']]'],
+  delimiters: ['[[', ']]'],
   data: {
     message: '',
   },
@@ -123,7 +123,7 @@ var ans2 = new Vue({
 
 var ans3 = new Vue({
   el: '#ans3',
-  delimiters: ['[[',']]'],
+  delimiters: ['[[', ']]'],
   data: {
     message: '',
   },
@@ -142,7 +142,7 @@ var ans3 = new Vue({
 
 var ans4 = new Vue({
   el: '#ans4',
-  delimiters: ['[[',']]'],
+  delimiters: ['[[', ']]'],
   data: {
     message: '',
   },
@@ -252,7 +252,7 @@ function checkAnswer(ques, ans) {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
     }
-  }).then((response) => {
+  }).then(response => response.body()).then(response=>{
     var result = false;
     if (response.status == 'ok') {
       //answer is correct therefore add to score
@@ -279,9 +279,9 @@ function checkAnswer(ques, ans) {
         break;
     }
 
-    if(session.getLives()<=0){
+    if (session.getLives() <= 0) {
       die();
-    }else{
+    } else {
       //load new question    
       getQuestion();
     }
