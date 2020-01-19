@@ -252,9 +252,9 @@ function checkAnswer(ques, ans) {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
     }
-  }).then(response => response.json()).then(response=>{
+  }).then(response => {
     var result = false;
-    if (response.status == 'ok') {
+    if (response.ok) {
       //answer is correct therefore add to score
       session.addScore();
     } else {

@@ -43,6 +43,6 @@ def check_correct_ans(request):
         ans = request.POST['answer']
         correct_ans = list(qn_obj.answers_set.filter(is_correct=True))[0]
         if ans == correct_ans.title:
-            return JsonResponse({'status': 'ok'})
-        return JsonResponse({'status': 'ko'})
+            return JsonResponse({'status': 'ok'}, status=200)
+        return JsonResponse({'status': 'ko'}, status=201)
     
