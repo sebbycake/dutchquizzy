@@ -2,6 +2,8 @@
     height:50px;
     animation:rotate 3s linear infinite;
     transform-origin: bottom center;
+    opacity: 0;
+    display: none;
   }
   
   .circle {
