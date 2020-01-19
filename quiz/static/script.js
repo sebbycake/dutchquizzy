@@ -262,7 +262,7 @@ function checkAnswer(ques, ans) {
   }
 
   //post request to api to check correctness of answer
-  fetch(path, {
+  fetch('api/check_correct_ans/', {
     method: "POST",
     body: form,
     headers: {
