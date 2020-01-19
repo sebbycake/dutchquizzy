@@ -1,53 +1,55 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>DutchQuizzy</title>
+    <link href="/static/loader1.css" rel="stylesheet" type="text/css" />
+    <link href="/static/style.css" rel="stylesheet" type="text/css" />
+  </head>
 
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
-	<title>DutchQuizzy</title>
-	<link href="/static/loader1.css" rel="stylesheet" type="text/css" />
-	<link href="/static/style.css" rel="stylesheet" type="text/css" />
-
-</head>
-
-<body>
-	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js">
-	</script>
-	<script src="https://cdn.jsdelivr.net/npm/vuex@3.1.2/dist/vuex.min.js">
-	</script>
-
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
       <div class="loader">
         <div class="circle"></div>
         <div class="circle"></div>
       </div>
 
-      <div class='startScreen'>
+      <div class="startScreen">
         <h1>de quiz</h1>
-        <button class = 'btn' id = 'startQuiz' v-on:click = "takeQuiz">Take Quiz</button>
+        <button class="btn" id="startQuiz" v-on:click="takeQuiz">
+          Take Quiz
+        </button>
       </div>
-      
-      <div class = "endScreen">
+
+      <div class="endScreen">
         <h1>Game Over!!!</h1>
         <h2>Your Final Score:</h2>
-        <h2>{{score}}</h2>
+        <h2>[[score]]</h2>
       </div>
 
       <section class="main">
-        <div id = "sessionValues">
-          <img v-for="life in lives" src="/static/images/heart.png" width=60 alt = "heart">
-          <h2>Lives: {{lives}}</h2>
-          <h2>Score: {{score}}</h2>
+        <div id="sessionValues">
+          <img
+            v-for="life in lives"
+            src="/static/images/heart.png"
+            width="60"
+            alt="heart"
+          />
+          <h2>Lives: [[lives]]</h2>
+          <h2>Score: [[score]]</h2>
         </div>
-        <p id="question">{{message}}</p>
+        <p id="question">[[message]]</p>
         <div>
-          <button class="btn" id="ans1" v-on:click = "check" >{{message}}</button>
-          <button class="btn" id="ans2" v-on:click = "check">{{message}}</button>
+          <button class="btn" id="ans1" v-on:click="check">[[message]]</button>
+          <button class="btn" id="ans2" v-on:click="check">[[message]]</button>
         </div>
         <div>
-          <button class="btn" id="ans3" v-on:click = "check">{{message}}</button>
-          <button class="btn" id="ans4" v-on:click = "check">{{message}}</button>
-        </div>     
+          <button class="btn" id="ans3" v-on:click="check">[[message]]</button>
+          <button class="btn" id="ans4" v-on:click="check">[[message]]</button>
+        </div>
       </section>
+
     <script src="/static/script.js"></script>
   </body>
 </html>

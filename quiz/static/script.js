@@ -20,8 +20,10 @@ const main = document.querySelector('.main');
 //   }, loadTime);
 // };
 
+
 var session = new Vue({
   el: '#sessionValues',
+  delimiters: ['[[',']]'],
   data: {
     score: 0,
     lives: 3
@@ -48,6 +50,7 @@ var session = new Vue({
 
 var startPage = new Vue({
   el: '#startQuiz',
+  delimiters: ['[[',']]'],
   data: {
     visible: true
   },
@@ -61,8 +64,9 @@ var startPage = new Vue({
 
 var question = new Vue({
   el: '#question',
+  delimiters: ['[[',']]'],
   data: {
-    message: '',
+    message: 'kjhkjhkjh',
   },
   methods: {
     update: function (value) {
@@ -79,6 +83,7 @@ var question = new Vue({
 
 var ans1 = new Vue({
   el: '#ans1',
+  delimiters: ['[[',']]'],
   data: {
     message: '',
   },
@@ -97,6 +102,7 @@ var ans1 = new Vue({
 
 var ans2 = new Vue({
   el: '#ans2',
+  delimiters: ['[[',']]'],
   data: {
     message: '',
   },
@@ -115,6 +121,7 @@ var ans2 = new Vue({
 
 var ans3 = new Vue({
   el: '#ans3',
+  delimiters: ['[[',']]'],
   data: {
     message: '',
   },
@@ -133,6 +140,7 @@ var ans3 = new Vue({
 
 var ans4 = new Vue({
   el: '#ans4',
+  delimiters: ['[[',']]'],
   data: {
     message: '',
   },
@@ -168,18 +176,8 @@ function endLoad() {
 // load();
 
 
-const api = 'http://68.183.187.41/';
-//tmp thing for testing on working api
-var myHeaders = new Headers();
-myHeaders.append('X-Mashape-Key', 'm5NfJ7RhFjmshZvppEv6kqHYA7Ypp1w74dqjsn8PrVfgSWkAqm');
-var myInit = {
-  method: 'GET',
-  headers: myHeaders
-};
-
 //variable to store deserialized json data
 var jsonObject;
-//testdata
 var testjson = '{"question" : "what is the answer", "answers" : { "ans1":"this is not the answer", "ans2":"also not the answer", "ans3":"definitely not the answer", "ans4": "this is the answer"}}';
 
 
@@ -212,8 +210,7 @@ function getQuestion() {
   fetch('api/question/')
     .then(res => res.json())
     .then(res => {
-      console.log(res);
-      jsonObject = res;
+      jsonObject = JSON.parse(testjson);
       choices.push(jsonObject.answers.ans1);
       choices.push(jsonObject.answers.ans2);
       choices.push(jsonObject.answers.ans3);
@@ -228,8 +225,6 @@ function getQuestion() {
       ans4.update(choices[3]);
       //remove loading screen 
       endLoad();
-
-      console.log('here2');
     });
 }
 
